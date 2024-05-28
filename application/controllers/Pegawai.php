@@ -10,6 +10,7 @@ class Pegawai extends CI_Controller
         $this->load->model('UserModel');
         $this->load->model('PeranModel');
         $this->load->model('RKGBModel');
+        $this->load->model('NotifModel');
         $this->load->helper('date');
     }
 
@@ -17,16 +18,19 @@ class Pegawai extends CI_Controller
     {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar_pegawai');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar_pegawai');
         $this->load->view('pegawai/index');
         $this->load->view('templates/footer');
     }
 
     public function profil()
     {
+        $session_pengguna_id = $this->session->userdata('penggunaId');
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
+
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar_pegawai');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar_pegawai', $data);
         $this->load->view('pegawai/profil');
         $this->load->view('templates/footer');
     }
@@ -35,7 +39,7 @@ class Pegawai extends CI_Controller
     {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar_pegawai');
-        $this->load->view('templates/topbar');
+        $this->load->view('templates/topbar_pegawai');
         $this->load->view('pegawai/edit');
         $this->load->view('templates/footer');
     }
@@ -62,7 +66,7 @@ class Pegawai extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar_pegawai');
-            $this->load->view('templates/topbar');
+            $this->load->view('templates/topbar_pegawai');
             $this->load->view('pegawai/riwayat_kgb', $data);
             $this->load->view('templates/footer');
         } else {
@@ -139,7 +143,7 @@ class Pegawai extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar_pegawai');
-            $this->load->view('templates/topbar');
+            $this->load->view('templates/topbar_pegawai');
             $this->load->view('pegawai/edit_kgb', $data);
             $this->load->view('templates/footer');
         } else {

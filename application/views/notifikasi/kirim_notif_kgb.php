@@ -19,18 +19,20 @@
                         <?= $message ?>
                         <?php $this->session->unset_userdata('message'); ?>
                     <?php endif; ?>
-                    <form method="post" action="<?= base_url('admin/tambahpengguna'); ?>">
+                    <form method="post" action="<?= base_url('notifikasi/kirimNotifKGB'); ?>">
                         <div class="form-group">
                             <label for="nama_pengguna">Kirim Ke</label>
                             <select class="form-control" id="nama_pengguna" name="nama_pengguna">
                                 <?php foreach ($pengguna as $p) : ?>
-                                    <option><?= $p['nama']; ?></option>
+                                    <option value="<?= $p['nama_pengguna']; ?>"><?= $p['nama']; ?></option>
                                 <?php endforeach; ?>
                             </select>
+                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="pesan">Pesan</label>
                             <textarea class="form-control" id="pesan" name="pesan" rows="3"></textarea>
+                            <?= form_error('pesan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <button type="submit" class="btn btn-primary">Tambahkan</button>
                     </form>

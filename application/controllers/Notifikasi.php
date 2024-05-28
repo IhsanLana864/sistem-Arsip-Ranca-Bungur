@@ -19,6 +19,9 @@ class Notifikasi extends CI_Controller
         $this->db->order_by('nama_pengguna', 'ASC');
         $data['pengguna'] = $this->UserModel->get_all_user();
 
+        $this->form_validation->set_rules('nama_pengguna', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('pesan', 'Pesan', 'required|trim');
+
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar');
@@ -26,17 +29,21 @@ class Notifikasi extends CI_Controller
             $this->load->view('notifikasi/kirim_notif_kgb', $data);
             $this->load->view('templates/footer');
         } else {
+            $nama_pengguna = $this->input->post('nama_pengguna');
+
+            $user = $this->UserModel->get_user($nama_pengguna);
+
             $notifikasi_data = array(
-                'tipe' => 'KGB',
-                'dikirimKe' => 'wef',
-                'dikirimOleh' => $this->session->userdata('user_id'),
-                'tanggalKirim' => date('Y-m-d H:i:s'),
-                'status' => 'Belum Dibaca',
+                'pengguna_id' => $user->id,
+                'dikirim_ke' => $user->nama,
+                'dikirim_oleh' => 'Admin',
                 'pesan' => $this->input->post('pesan')
             );
 
+            $this->db->insert('notifikasi_kgb', $notifikasi_data);
 
-            $this->session->set_flashdata('message', 'Notifikasi KGB berhasil dikirim.');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Notifikasi berhasil dikirim.</div>');
+            redirect('notifikasi/kirimnotifkgb');
         }
     }
 }
