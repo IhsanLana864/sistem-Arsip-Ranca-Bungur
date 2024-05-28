@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         // Load model yang diperlukan, misal UserModel
         $this->load->model('UserModel');
         $this->load->model('PeranModel');
+        $this->load->model('RiwayatKGBModel', 'rkgbmodel');
         $this->load->helper('date');
     }
 
