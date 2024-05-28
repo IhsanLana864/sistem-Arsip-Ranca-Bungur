@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class UserModel extends CI_Model
 {
 
-    public function get_user($nama_pengguna, $kata_sandi)
+    public function get_user($nama_pengguna)
     {
         // Query ke database untuk mencari user berdasarkan nama pengguna dan kata sandi
         $this->db->select('pengguna.*, peran.nama_peran');
@@ -20,5 +20,10 @@ class UserModel extends CI_Model
             // Jika tidak ditemukan, kembalikan null
             return null;
         }
+    }
+
+    public function add_user($data)
+    {
+        $this->db->insert('pengguna', $data);
     }
 }
