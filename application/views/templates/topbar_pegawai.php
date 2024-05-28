@@ -42,19 +42,28 @@
                     Notifikasi
                 </h6>
 
-                <?php foreach ($notifikasi as $n) : ?>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-exclamation-triangle text-white"></i>
+                <?php
+                $count = 0;
+                foreach ($notifikasi as $n) :
+                    if ($count < 2) :
+                ?>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500"><?= date('d F Y H:i:s', strtotime($n['tanggal_kirim'])); ?> WIB</div>
-                            <?= $n['pesan']; ?>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
+                            <div>
+                                <div class="small text-gray-500"><?= date('d F Y H:i:s', strtotime($n['tanggal_kirim'])); ?> WIB</div>
+                                <?= $n['pesan']; ?>
+                            </div>
+                        </a>
+                <?php
+                    endif;
+                    $count++;
+                endforeach;
+                ?>
+
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
         </li>

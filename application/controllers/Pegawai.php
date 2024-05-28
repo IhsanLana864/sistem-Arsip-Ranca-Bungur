@@ -16,9 +16,11 @@ class Pegawai extends CI_Controller
 
     public function index()
     {
+        $session_pengguna_id = $this->session->userdata('penggunaId');
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar_pegawai');
-        $this->load->view('templates/topbar_pegawai');
+        $this->load->view('templates/topbar_pegawai', $data);
         $this->load->view('pegawai/index');
         $this->load->view('templates/footer');
     }
@@ -37,9 +39,11 @@ class Pegawai extends CI_Controller
 
     public function edit()
     {
+        $session_pengguna_id = $this->session->userdata('penggunaId');
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar_pegawai');
-        $this->load->view('templates/topbar_pegawai');
+        $this->load->view('templates/topbar_pegawai', $data);
         $this->load->view('pegawai/edit');
         $this->load->view('templates/footer');
     }
@@ -48,6 +52,7 @@ class Pegawai extends CI_Controller
     {
         $session_pengguna_id = $this->session->userdata('penggunaId');
         $data['riwayat_kgb'] = $this->RKGBModel->get_riwayat_kgb($session_pengguna_id);
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
 
         $this->form_validation->set_rules('golongan_ruang', 'Gol. Ruang', 'required|trim');
         // $this->form_validation->set_rules('gaji_tahun', 'Gaji Tahun', 'required|trim');
@@ -66,7 +71,7 @@ class Pegawai extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar_pegawai');
-            $this->load->view('templates/topbar_pegawai');
+            $this->load->view('templates/topbar_pegawai', $data);
             $this->load->view('pegawai/riwayat_kgb', $data);
             $this->load->view('templates/footer');
         } else {
@@ -136,6 +141,7 @@ class Pegawai extends CI_Controller
     {
         $session_pengguna_id = $this->session->userdata('penggunaId');
         $data['riwayat_kgb'] = $this->RKGBModel->get_kgb_by_id($id);
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
 
         $this->form_validation->set_rules('golongan_ruang', 'Gol. Ruang', 'required|trim');
         $this->form_validation->set_rules('file_sk_berkala', 'File SK Berkala', 'callback_file_check');
@@ -143,7 +149,7 @@ class Pegawai extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar_pegawai');
-            $this->load->view('templates/topbar_pegawai');
+            $this->load->view('templates/topbar_pegawai', $data);
             $this->load->view('pegawai/edit_kgb', $data);
             $this->load->view('templates/footer');
         } else {

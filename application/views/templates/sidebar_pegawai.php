@@ -30,6 +30,13 @@
             <span>Ubah Password</span></a>
     </li>
 
+    <!-- Nav Item - Data Pegawai -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('notifikasi/pesannotif'); ?>">
+            <i class="fas fa-fw fa-bell"></i>
+            <span>Notifikasi</span></a>
+    </li>
+
     <!-- Nav Item - Keluar -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('auth/keluar'); ?>">
