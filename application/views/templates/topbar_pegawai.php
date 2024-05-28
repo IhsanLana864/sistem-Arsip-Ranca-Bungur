@@ -45,7 +45,7 @@
                 <?php
                 $count = 0;
                 foreach ($notifikasi as $n) :
-                    if ($count < 2) :
+                    if ($count < 4) :
                 ?>
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <div class="mr-3">
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500"><?= date('d F Y H:i:s', strtotime($n['tanggal_kirim'])); ?> WIB</div>
+                                <div class="small text-gray-500"><?= date('d F Y | H:i', strtotime($n['tanggal_kirim'])); ?></div>
                                 <?= $n['pesan']; ?>
                             </div>
                         </a>
@@ -64,10 +64,26 @@
                 endforeach;
                 ?>
 
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="<?= base_url('notifikasi/pesannotif'); ?>">Lihat semua notifikasi</a>
             </div>
         </li>
     </ul>
 
 </nav>
 <!-- End of Topbar -->
+
+<script>
+    $(document).ready(function() {
+        $('#alertsDropdown').on('click', function() {
+            $.ajax({
+                url: '<?= base_url('notifikasi/updateNotificationStatus'); ?>',
+                method: 'POST',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $('#notification-count').fadeOut();
+                    }
+                }
+            });
+        });
+    });
+</script>

@@ -125,10 +125,4 @@ class Pegawai extends CI_Controller
         }
         return true;
     }
-
-    public function deleteriwayatkgb($id)
-    {
-        $this->db->delete('riwayat_kgb', ['id' => $id]);
-        redirect('pegawai/riwayatkgb');
-    }
 }

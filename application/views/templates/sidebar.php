@@ -27,12 +27,12 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('notifikasi/kirimnotifkgb'); ?>">
             <i class="fas fa-fw fa-bell"></i>
-            <span>Kirim Notifikasi KGB:</span></a>
+            <span>Kirim Notifikasi KGB</span></a>
     </li>
 
     <!-- Nav Item - Kelola Riwayat KGB -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/kelolariwayatkgb'); ?>">
             <i class="fas fa-fw fa-history"></i>
             <span>Kelola Riwayat KGB</span></a>
     </li>

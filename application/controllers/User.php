@@ -9,6 +9,7 @@ class User extends CI_Controller
         // Load model yang diperlukan, misal UserModel
         $this->load->model('UserModel');
         $this->load->model('PeranModel');
+        $this->load->model('NotifModel');
         $this->load->helper('date');
     }
 
@@ -24,15 +25,20 @@ class User extends CI_Controller
         ]);
         $this->form_validation->set_rules('kata_sandi_baru2', 'Kata Sandi Baru', 'required|trim|matches[kata_sandi_baru1]');
 
+        // nangkep notifikasi di topbar
+        $session_pengguna_id = $this->session->userdata('penggunaId');
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
+
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             // Cek nilai peranId dan load sidebar yang sesuai
             if ($session_peranId == 1) {
                 $this->load->view('templates/sidebar');
+                $this->load->view('templates/topbar');
             } elseif ($session_peranId == 3) {
                 $this->load->view('templates/sidebar_pegawai');
+                $this->load->view('templates/topbar_pegawai', $data);
             }
-            $this->load->view('templates/topbar');
             $this->load->view('user/ubah_password');
             $this->load->view('templates/footer');
         } else {

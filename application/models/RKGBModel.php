@@ -7,4 +7,13 @@ class RKGBModel extends CI_Model
     {
         return $this->db->get_where('riwayat_kgb', ['penggunaId' => $session_pengguna_id])->result_array();
     }
+
+    public function get_all_riwayat_kgb()
+    {
+        $this->db->select('riwayat_kgb.*, pengguna.nama');
+        $this->db->from('riwayat_kgb');
+        $this->db->join('pengguna', 'riwayat_kgb.penggunaId = pengguna.id', 'left');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

@@ -70,10 +70,11 @@ class Notifikasi extends CI_Controller
             // Cek nilai peranId dan load sidebar yang sesuai
             if ($session_peranId == 1) {
                 $this->load->view('templates/sidebar');
+                $this->load->view('templates/topbar');
             } elseif ($session_peranId == 3) {
                 $this->load->view('templates/sidebar_pegawai');
+                $this->load->view('templates/topbar_pegawai', $data);
             }
-            $this->load->view('templates/topbar');
             $this->load->view('notifikasi/pesan_notif', $data);
             $this->load->view('templates/footer');
         } else {
@@ -93,5 +94,13 @@ class Notifikasi extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Notifikasi berhasil dikirim.</div>');
             redirect('notifikasi/kirimnotifkgb');
         }
+    }
+
+    public function markNotificationsAsRead()
+    {
+        $session_pengguna_id = $this->session->userdata('pengguna_id');
+        $this->load->model('Notifikasi_model');
+        $this->Notifikasi_model->markNotificationsAsRead($session_pengguna_id);
+        echo json_encode(['status' => 'success']);
     }
 }

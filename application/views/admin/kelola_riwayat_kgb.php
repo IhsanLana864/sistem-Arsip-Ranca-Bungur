@@ -11,7 +11,6 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Tabel Riwayat KGB</h6>
-            <a href="#" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#exampleModal">Tambah</a>
         </div>
 
         <div class="card-body">
@@ -24,6 +23,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Nama Pegawai</th>
                             <th>Golongan</th>
                             <th>Gaji</th>
                             <th>KGB No SK</th>
@@ -33,12 +33,15 @@
                             <th>Bulan KGB</th>
                             <th>KGB Tanggal Surat</th>
                             <th>No SK Terakhir</th>
+                            <th>FIle SK Berkala</th>
+                            <th>Waktu Kirim</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>#</th>
+                            <th>Nama Pegawai</th>
                             <th>Golongan</th>
                             <th>Gaji</th>
                             <th>KGB No SK</th>
@@ -48,6 +51,8 @@
                             <th>Bulan KGB</th>
                             <th>KGB Tanggal Surat</th>
                             <th>No SK Terakhir</th>
+                            <th>File SK Berkala</th>
+                            <th>Waktu Kirim</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
@@ -56,6 +61,7 @@
                         <?php foreach ($riwayat_kgb as $rkgb) : ?>
                             <tr>
                                 <td><?= $i; ?></td>
+                                <td><?= $rkgb['nama']; ?></td>
                                 <td><?= $rkgb['golongan_ruang']; ?></td>
                                 <td><?= $rkgb['gaji']; ?></td>
                                 <td><?= $rkgb['kgb_nomor_sk']; ?></td>
@@ -65,6 +71,8 @@
                                 <td><?= $rkgb['bulan_kgb']; ?></td>
                                 <td><?= $rkgb['kgb_tanggal_surat']; ?></td>
                                 <td><?= $rkgb['nomor_sk_terakhir']; ?></td>
+                                <td><a href="<?= base_url('assets/file/riwayatkgb/' . $rkgb['file_sk_berkala']); ?>"><?= $rkgb['file_sk_berkala']; ?></a></td>
+                                <td><?= $rkgb['waktu_pembuatan']; ?></td>
                                 <td>
                                     <a href="" class="btn btn-warning">Edit</a>
                                     <a href="<?= base_url('riwayatkgb/delete/' . $rkgb['id']); ?>" class="btn btn-danger">Hapus</a>

@@ -9,6 +9,8 @@ class Admin extends CI_Controller
         // Load model yang diperlukan, misal UserModel
         $this->load->model('UserModel');
         $this->load->model('PeranModel');
+        $this->load->model('RKGBModel');
+        $this->load->model('NotifModel');
         $this->load->helper('date');
     }
 
@@ -115,5 +117,71 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar');
         $this->load->view('admin/kelola_pengguna', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function kelolaRiwayatKgb()
+    {
+        $session_pengguna_id = $this->session->userdata('penggunaId');
+        $data['riwayat_kgb'] = $this->RKGBModel->get_all_riwayat_kgb();
+        $data['notifikasi'] = $this->NotifModel->get_notif($session_pengguna_id);
+        $this->form_validation->set_rules('golongan_ruang', 'Gol. Ruang', 'required|trim');
+        // $this->form_validation->set_rules('gaji_tahun', 'Gaji Tahun', 'required|trim');
+        // $this->form_validation->set_rules('masa_kerja_tahun', 'Masa Kerja Tahun', 'required|trim');
+        // $this->form_validation->set_rules('gaji', 'Gaji', 'required|trim');
+        // $this->form_validation->set_rules('kgb_nomor_sk', 'KGB Nomor SK', 'required|trim');
+        // $this->form_validation->set_rules('kgb_tmt', 'KGB TMT', 'required|trim');
+        // $this->form_validation->set_rules('tanggal_yad_kgb', 'Tanggal YAD KGB', 'required|trim');
+        // $this->form_validation->set_rules('tahun_kgb', 'Tahun KGB', 'required|trim');
+        // $this->form_validation->set_rules('bulan_kgb', 'Bulan KGB', 'required|trim');
+        // $this->form_validation->set_rules('kgb_tanggal_surat', 'KGB Tanggal Surat', 'required|trim');
+        // $this->form_validation->set_rules('nomor_sk_terakhir', 'No. SK Terakhir', 'required|trim');
+        // $this->form_validation->set_rules('file_sk_berkala', 'File SK Berkala', 'required|trim');
+        $this->form_validation->set_rules('file_sk_berkala', 'File SK Berkala', 'callback_file_check');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header');
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar_pegawai', $data);
+            $this->load->view('admin/kelola_riwayat_kgb', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'penggunaId' => $session_pengguna_id,
+                'golongan_ruang' => $this->input->post('golongan_ruang'),
+                'gaji_tahun' => $this->input->post('gaji_tahun'),
+                'masa_kerja_tahun' => $this->input->post('masa_kerja_tahun'),
+                'gaji' => $this->input->post('gaji'),
+                'kgb_nomor_sk' => $this->input->post('kgb_nomor_sk'),
+                'kgb_tmt' => $this->input->post('kgb_tmt'),
+                'tanggal_yad_kgb' => $this->input->post('tanggal_yad_kgb'),
+                'tahun_kgb' => $this->input->post('tahun_kgb'),
+                'bulan_kgb' => $this->input->post('bulan_kgb'),
+                'kgb_tanggal_surat' => $this->input->post('kgb_tanggal_surat'),
+                'nomor_sk_terakhir' => $this->input->post('nomor_sk_terakhir'),
+            ];
+
+            // Handle file upload
+            $upload_file = $_FILES['file_sk_berkala']['name'];
+            if ($upload_file) {
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '10000';
+                $config['upload_path'] = './assets/file/riwayatkgb';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_sk_berkala')) {
+                    $new_image = $this->upload->data('file_name');
+                    $data['file_sk_berkala'] = $new_image;
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+                    redirect('pegawai/riwayatkgb');
+                }
+            }
+
+            $this->db->insert('riwayat_kgb', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menyimpan data.</div>');
+            redirect('pegawai/riwayatkgb');
+        }
     }
 }
