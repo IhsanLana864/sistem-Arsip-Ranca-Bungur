@@ -18,6 +18,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nama Pengguna</th>
+                            <th>Nama Lengkap</th>
                             <th>Peran</th>
                             <th>Status Aktif</th>
                             <th>Tanggal Pembuatan Akun</th>
@@ -28,6 +29,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nama Pengguna</th>
+                            <th>Nama Lengkap</th>
                             <th>Peran</th>
                             <th>Status Aktif</th>
                             <th>Tanggal Pembuatan Akun</th>
@@ -42,6 +44,7 @@
                             <tr>
                                 <td><?= $i; ?></td>
                                 <td><?= $p['nama_pengguna']; ?></td>
+                                <td><?= $p['nama']; ?></td>
                                 <td><?= $p['nama_peran']; ?></td>
                                 <td><?= ($p['status_aktif'] == 1) ? 'Aktif' : 'Tidak Aktif'; ?></td>
                                 <td><?php echo format_date($p['tanggal_pembuatan_akun']); ?></td> <!-- Menggunakan tanggal yang telah diformat -->

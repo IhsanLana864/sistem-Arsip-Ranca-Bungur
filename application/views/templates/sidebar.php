@@ -25,7 +25,7 @@
 
     <!-- Nav Item - Kirim Notifikasi KGB: -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+        <a class="nav-link" href="<?= base_url('notifikasi/kirimnotifkgb'); ?>">
             <i class="fas fa-fw fa-bell"></i>
             <span>Kirim Notifikasi KGB:</span></a>
     </li>

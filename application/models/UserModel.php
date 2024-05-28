@@ -47,4 +47,11 @@ class UserModel extends CI_Model
     {
         $this->db->insert('pengguna', $data);
     }
+
+    public function update_password($nama_pengguna, $hash_sandi_baru)
+    {
+        $this->db->set('kata_sandi', $hash_sandi_baru);
+        $this->db->where('nama_pengguna', $nama_pengguna);
+        return $this->db->update('pengguna'); // Nama tabel pengguna
+    }
 }

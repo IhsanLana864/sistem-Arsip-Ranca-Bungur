@@ -26,6 +26,11 @@
                             <?= form_error('nama_pengguna', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="nama" name="nama" value="<?= set_value('nama'); ?>">
+                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group">
                             <label for="kata_sandi1">Kata Sandi</label>
                             <input type="password" class="form-control" id="kata_sandi1" name="kata_sandi1">
                             <?= form_error('kata_sandi1', '<small class="text-danger pl-3">', '</small>'); ?>

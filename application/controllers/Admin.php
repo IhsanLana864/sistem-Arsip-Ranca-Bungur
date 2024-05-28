@@ -28,6 +28,8 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('nama_pengguna', 'Nama Pengguna', 'required|trim|is_unique[pengguna.nama_pengguna]', [
             'is_unique' => 'Nama pengguna telah terdaftar!'
         ]);
+
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim');
         $this->form_validation->set_rules('kata_sandi1', 'Kata Sandi', 'required|trim|min_length[3]|matches[kata_sandi2]', [
             'matches' => 'Password tidak cocok!',
             'min_length' => 'Password terlalu pendek!'
@@ -43,12 +45,14 @@ class Admin extends CI_Controller
         } else {
             // Ambil data dari form
             $nama_pengguna = $this->input->post('nama_pengguna');
+            $nama_lengkap = $this->input->post('nama');
             $kata_sandi = $this->input->post('kata_sandi1');
             $hashed_kata_sandi = hash('sha256', $kata_sandi);
             $peran = $this->input->post('peran');
 
             $data = [
                 'nama_pengguna' => $nama_pengguna,
+                'nama' => $nama_lengkap,
                 'kata_sandi' => $hashed_kata_sandi,
                 'peranId' => $peran,
                 'status_aktif' => 1,

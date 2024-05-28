@@ -9,11 +9,18 @@
         <div class="sidebar-brand-text mx-3">Aplikasi Arsip</div>
     </a>
 
-    <!-- Nav Item - Kelola Pengguna -->
+    <!-- Nav Item - Data Pegawai -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('pegawai/profil'); ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>Data Pegawai</span></a>
+    </li>
+
+    <!-- Nav Item - Ubah Password -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('user/edit'); ?>">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Ubah Password</span></a>
     </li>
 
     <!-- Nav Item - Keluar -->

@@ -39,6 +39,7 @@ class Auth extends CI_Controller
                     // Jika verifikasi berhasil, set session dan arahkan ke halaman dashboard
                     $userdata = array(
                         'penggunaId' => $user->id,
+                        'peranId' => $user->peranId,
                         'nama_pengguna' => $user->nama_pengguna,
                         'sedang_masuk' => TRUE
                     );
