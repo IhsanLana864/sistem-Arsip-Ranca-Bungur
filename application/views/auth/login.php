@@ -40,9 +40,9 @@
                                         <p class="text-secondary mb-4">Masukkan email dan kata sandi untuk masuk</p>
                                     </div>
 
-                                    <?php if ($error = $this->session->flashdata('error')) : ?>
-                                        <?= $error ?>
-                                        <?php $this->session->unset_userdata('error'); ?>
+                                    <?php if ($message = $this->session->flashdata('message')) : ?>
+                                        <?= $message ?>
+                                        <?php $this->session->unset_userdata('message'); ?>
                                     <?php endif; ?>
 
 

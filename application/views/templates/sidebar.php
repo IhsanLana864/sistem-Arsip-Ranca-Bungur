@@ -101,6 +101,13 @@
             <span>Tambah Pengguna</span></a>
     </li>
 
+    <!-- Nav Item - Tambah Pengguna -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Keluar</span></a>
+    </li>
+
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="tables.html">

@@ -57,7 +57,7 @@ class Auth extends CI_Controller
                 }
             } else {
                 // Jika user tidak ditemukan, tampilkan pesan error
-                $this->session->set_flashdata('error', '<div class="alert alert-danger" role="alert">Nama pengguna atau kata sandi salah.</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nama pengguna atau kata sandi salah.</div>');
                 redirect('auth/index');
             }
         }
@@ -66,7 +66,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         // Hapus session dan arahkan ke halaman login
-        $this->session->unset_userdata('logged_in');
-        redirect('login');
+        $this->session->sess_destroy();
+        redirect('auth/index');
     }
 }
