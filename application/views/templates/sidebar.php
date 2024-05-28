@@ -94,16 +94,37 @@
             <span>Charts</span></a>
     </li>
 
-    <!-- Nav Item - Tambah Pengguna -->
+    <!-- Nav Item - Kelola Pengguna -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
-            <i class="fas fa-fw fa-user-plus"></i>
-            <span>Tambah Pengguna</span></a>
+        <a class="nav-link" href="<?= base_url('admin/kelolapengguna'); ?>">
+            <i class="fas fa-fw fa-user-edit"></i>
+            <span>Kelola Pengguna</span></a>
     </li>
 
-    <!-- Nav Item - Tambah Pengguna -->
+    <!-- Nav Item - Kelola Berkas -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Kelola Berkas</span></a>
+    </li>
+
+    <!-- Nav Item - Kirim Notifikasi KGB: -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+            <i class="fas fa-fw fa-bell"></i>
+            <span>Kirim Notifikasi KGB:</span></a>
+    </li>
+
+    <!-- Nav Item - Kelola Riwayat KGB -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+            <i class="fas fa-fw fa-history"></i>
+            <span>Kelola Riwayat KGB</span></a>
+    </li>
+
+    <!-- Nav Item - Keluar -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('auth/keluar'); ?>">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Keluar</span></a>
     </li>

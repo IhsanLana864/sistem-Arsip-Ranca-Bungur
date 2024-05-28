@@ -31,7 +31,7 @@ class Auth extends CI_Controller
             $kata_sandi = $this->input->post('kata_sandi');
 
             // Cek ke database untuk login
-            $user = $this->UserModel->get_user($nama_pengguna, $kata_sandi);
+            $user = $this->UserModel->get_user($nama_pengguna);
 
             if ($user) {
                 // Jika user ditemukan, verifikasi kata sandi
@@ -63,7 +63,7 @@ class Auth extends CI_Controller
         }
     }
 
-    public function logout()
+    public function keluar()
     {
         // Hapus session dan arahkan ke halaman login
         $this->session->sess_destroy();

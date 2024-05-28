@@ -22,6 +22,15 @@ class UserModel extends CI_Model
         }
     }
 
+    public function get_all_user()
+    {
+        $this->db->select('pengguna.*, peran.nama_peran');
+        $this->db->from('pengguna');
+        $this->db->join('peran', 'pengguna.peranId = peran.id', 'left');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function add_user($data)
     {
         $this->db->insert('pengguna', $data);

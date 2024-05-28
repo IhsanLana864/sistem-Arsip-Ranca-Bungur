@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         // Load model yang diperlukan, misal UserModel
         $this->load->model('UserModel');
         $this->load->model('PeranModel');
+        $this->load->helper('date');
     }
 
     public function index()
@@ -50,6 +51,7 @@ class Admin extends CI_Controller
                 'nama_pengguna' => $nama_pengguna,
                 'kata_sandi' => $hashed_kata_sandi,
                 'peranId' => $peran,
+                'tanggal_pembuatan_akun' => time(),
             ];
 
             $this->UserModel->add_user($data);
@@ -57,5 +59,16 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengguna baru berhasil ditambahkan.</div>');
             redirect('admin/tambahpengguna');
         }
+    }
+
+    public function kelolaPengguna()
+    {
+        $data['pengguna'] = $this->UserModel->get_all_user();
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('admin/kelola_pengguna', $data);
+        $this->load->view('templates/footer');
     }
 }
