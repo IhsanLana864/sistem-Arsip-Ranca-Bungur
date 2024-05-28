@@ -25,7 +25,7 @@
     <div class="container">
 
         <!-- Outer Row -->
-        <div class="row justify-content-start">
+        <div class="row justify-content-center">
 
             <div class="col-lg-5 left-side">
 
@@ -36,7 +36,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900">Masuk</h1>
+                                        <h1 class="h4 text-gray-900">Aplikasi Pengarsipan SMAN 1 Rancabungur</h1>
                                         <p class="text-secondary mb-4">Masukkan email dan kata sandi untuk masuk</p>
                                     </div>
 

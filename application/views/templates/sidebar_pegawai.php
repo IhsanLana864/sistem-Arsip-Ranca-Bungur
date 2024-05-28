@@ -11,30 +11,9 @@
 
     <!-- Nav Item - Kelola Pengguna -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/kelolapengguna'); ?>">
-            <i class="fas fa-fw fa-user-edit"></i>
-            <span>Kelola Pengguna</span></a>
-    </li>
-
-    <!-- Nav Item - Kelola Berkas -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Kelola Berkas</span></a>
-    </li>
-
-    <!-- Nav Item - Kirim Notifikasi KGB: -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
-            <i class="fas fa-fw fa-bell"></i>
-            <span>Kirim Notifikasi KGB:</span></a>
-    </li>
-
-    <!-- Nav Item - Kelola Riwayat KGB -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
-            <i class="fas fa-fw fa-history"></i>
-            <span>Kelola Riwayat KGB</span></a>
+        <a class="nav-link" href="<?= base_url('pegawai/profil'); ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Data Pegawai</span></a>
     </li>
 
     <!-- Nav Item - Keluar -->

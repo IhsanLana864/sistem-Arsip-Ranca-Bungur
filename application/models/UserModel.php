@@ -22,6 +22,18 @@ class UserModel extends CI_Model
         }
     }
 
+    public function edit_user($nama_pengguna, $update_data)
+    {
+        // Cari pengguna berdasarkan nama_pengguna
+        $this->db->where('nama_pengguna', $nama_pengguna);
+
+        // Lakukan pembaruan data
+        $this->db->update('pengguna', $update_data);
+
+        // Mengembalikan hasil pembaruan
+        return $this->db->affected_rows();
+    }
+
     public function get_all_user()
     {
         $this->db->select('pengguna.*, peran.nama_peran');

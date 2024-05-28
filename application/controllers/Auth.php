@@ -38,7 +38,7 @@ class Auth extends CI_Controller
                 if (hash('sha256', $kata_sandi) === $user->kata_sandi) {
                     // Jika verifikasi berhasil, set session dan arahkan ke halaman dashboard
                     $userdata = array(
-                        'id_pengguna' => $user->id,
+                        'penggunaId' => $user->id,
                         'nama_pengguna' => $user->nama_pengguna,
                         'sedang_masuk' => TRUE
                     );

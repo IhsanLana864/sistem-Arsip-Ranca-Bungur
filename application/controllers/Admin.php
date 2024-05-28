@@ -51,6 +51,7 @@ class Admin extends CI_Controller
                 'nama_pengguna' => $nama_pengguna,
                 'kata_sandi' => $hashed_kata_sandi,
                 'peranId' => $peran,
+                'status_aktif' => 1,
                 'tanggal_pembuatan_akun' => time(),
             ];
 
@@ -60,6 +61,46 @@ class Admin extends CI_Controller
             redirect('admin/tambahpengguna');
         }
     }
+
+    public function editPengguna($nama_pengguna)
+    {
+        $data['peran'] = $this->PeranModel->get_peran();
+        $data['pengguna'] = $this->UserModel->get_user($nama_pengguna);
+
+        $this->form_validation->set_rules('peran', 'Peran', 'required');
+
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header');
+            $this->load->view('templates/sidebar');
+            $this->load->view('templates/topbar');
+            $this->load->view('admin/edit_pengguna', $data);
+            $this->load->view('templates/footer');
+        } else {
+            // Ambil data dari form
+            $peran = $this->input->post('peran');
+            $status_aktif = $this->input->post('status_aktif');
+
+            // Data yang akan diperbarui
+            $update_data = array(
+                'peranId' => $peran,
+                'status_aktif' => $status_aktif
+            );
+
+            // Lakukan pembaruan data berdasarkan nama pengguna
+            $this->UserModel->edit_user($nama_pengguna, $update_data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil memperbaharui data pengguna.</div>');
+            redirect('admin/editpengguna/' . $nama_pengguna);
+        }
+    }
+
+    public function hapusPengguna($nama_pengguna)
+    {
+        $this->db->delete('pengguna', ['nama_pengguna' => $nama_pengguna]);
+        redirect('admin/kelolapengguna');
+    }
+
 
     public function kelolaPengguna()
     {
