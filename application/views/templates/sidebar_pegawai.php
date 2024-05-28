@@ -20,7 +20,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('pegawai/riwayatkgb'); ?>">
             <i class="fas fa-fw fa-history"></i>
-            <span>Riwayat KGB</span></a>
+            <span>Riwayat KGB (ASN)</span></a>
     </li>
 
     <!-- Nav Item - Ubah Password -->
