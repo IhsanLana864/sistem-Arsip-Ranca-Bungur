@@ -71,7 +71,7 @@
                                 <td><?= $rkgb['bulan_kgb']; ?></td>
                                 <td><?= $rkgb['kgb_tanggal_surat']; ?></td>
                                 <td><?= $rkgb['nomor_sk_terakhir']; ?></td>
-                                <td><a href="<?= base_url('assets/file/riwayatkgb/' . $rkgb['file_sk_berkala']); ?>"><?= $rkgb['file_sk_berkala']; ?></a></td>
+                                <td><a href="<?= base_url('assets/berkas/' . $rkgb['file_sk_berkala']); ?>"><?= $rkgb['file_sk_berkala']; ?></a></td>
                                 <td><?= $rkgb['waktu_pembuatan']; ?></td>
                                 <td>
                                     <a href="" class="btn btn-warning">Edit</a>

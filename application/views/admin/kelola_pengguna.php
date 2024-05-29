@@ -17,6 +17,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Foto</th>
                             <th>Nama Pengguna</th>
                             <th>Nama Lengkap</th>
                             <th>Peran</th>
@@ -28,6 +29,7 @@
                     <tfoot>
                         <tr>
                             <th>#</th>
+                            <th>Foto</th>
                             <th>Nama Pengguna</th>
                             <th>Nama Lengkap</th>
                             <th>Peran</th>
@@ -43,6 +45,7 @@
                         <?php foreach ($pengguna as $p) : ?>
                             <tr>
                                 <td><?= $i; ?></td>
+                                <td><img src="<?= base_url('assets/img/profil/' . $p['foto_profil']); ?>" alt="" width="50"></td>
                                 <td><?= $p['nama_pengguna']; ?></td>
                                 <td><?= $p['nama']; ?></td>
                                 <td><?= $p['nama_peran']; ?></td>

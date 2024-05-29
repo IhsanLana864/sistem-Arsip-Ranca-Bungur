@@ -28,19 +28,19 @@
                                     <h3 class="mb-4"><b>Informasi Pribadi</b></h3>
                                     <div class="form-group">
                                         <label for="nama_pengguna">Tempat, Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" readonly>
+                                        <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" value="Jakarta, 20 April 2002" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="kata_sandi1">Jenis Kelamin</label>
-                                        <input type="password" class="form-control" id="kata_sandi1" name="kata_sandi1" readonly>
+                                        <input type="text" class="form-control" id="kata_sandi1" name="kata_sandi1" value="Laki-laki" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="kata_sandi2">Status Perkawinan</label>
-                                        <input type="password" class="form-control" id="kata_sandi2" name="kata_sandi2" readonly>
+                                        <input type="text" class="form-control" id="kata_sandi2" name="kata_sandi2" value="Belum menikah" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="kata_sandi2">Agama</label>
-                                        <input type="password" class="form-control" id="kata_sandi2" name="kata_sandi2" readonly>
+                                        <input type="text" class="form-control" id="kata_sandi2" name="kata_sandi2" value="Islam" readonly>
                                     </div>
                                 </div>
 

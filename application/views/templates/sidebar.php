@@ -3,10 +3,8 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-folder-open"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Aplikasi Arsip</div>
+        <img src="<?= base_url('assets/img/logo/smansa_rancus.png'); ?>" alt="" class="img-fluid" width="60">
+        <div class="sidebar-brand-text mx-3">Arsip</div>
     </a>
 
     <!-- Nav Item - Kelola Pengguna -->
@@ -18,7 +16,7 @@
 
     <!-- Nav Item - Kelola Berkas -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/tambahpengguna'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/kelolaberkas'); ?>">
             <i class="fas fa-fw fa-file"></i>
             <span>Kelola Berkas</span></a>
     </li>

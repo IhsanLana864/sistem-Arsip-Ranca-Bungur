@@ -11,6 +11,7 @@ class Admin extends CI_Controller
         $this->load->model('PeranModel');
         $this->load->model('RKGBModel');
         $this->load->model('NotifModel');
+        $this->load->model('BerkasModel');
         $this->load->helper('date');
     }
 
@@ -56,6 +57,7 @@ class Admin extends CI_Controller
                 'nama_pengguna' => $nama_pengguna,
                 'nama' => $nama_lengkap,
                 'kata_sandi' => $hashed_kata_sandi,
+                'foto_profil' => 'default.png',
                 'peranId' => $peran,
                 'status_aktif' => 1,
                 'tanggal_pembuatan_akun' => time(),
@@ -183,5 +185,18 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menyimpan data.</div>');
             redirect('pegawai/riwayatkgb');
         }
+    }
+
+    public function kelolaberkas()
+    {
+        $data['pengguna'] = $this->UserModel->get_all_user();
+        $data['berkas'] = $this->BerkasModel->get_berkas();
+
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('admin/kelola_berkas', $data);
+        $this->load->view('templates/footer');
     }
 }

@@ -90,18 +90,31 @@ class Pegawai extends CI_Controller
                 'nomor_sk_terakhir' => $this->input->post('nomor_sk_terakhir'),
             ];
 
+
             // Handle file upload
             $upload_file = $_FILES['file_sk_berkala']['name'];
             if ($upload_file) {
                 $config['allowed_types'] = 'pdf';
                 $config['max_size']     = '10000';
-                $config['upload_path'] = './assets/file/riwayatkgb';
+                $config['upload_path'] = './assets/berkas';
 
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('file_sk_berkala')) {
-                    $new_image = $this->upload->data('file_name');
+                    $uploaded_file_data = $this->upload->data(); // Mendapatkan informasi lengkap tentang berkas yang diunggah
+                    $new_image = $uploaded_file_data['file_name'];
                     $data['file_sk_berkala'] = $new_image;
+
+                    // Insert file information into 'berkas' table
+                    $berkas_data = [
+                        'nama_berkas' => $new_image,
+                        'jenis_berkas' => 'File SK Berkala',
+                        'ukuran_berkas' => $uploaded_file_data['file_size'], // Ukuran berkas dalam byte
+                        'path_berkas' => $uploaded_file_data['file_path'], // Menggunakan lokasi penyimpanan dari informasi yang diunggah
+                        'penggunaId' => $session_pengguna_id // Jika diperlukan, sesuaikan dengan ID pengguna
+                    ];
+
+                    $this->db->insert('berkas', $berkas_data);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
                     redirect('pegawai/riwayatkgb');
@@ -109,6 +122,7 @@ class Pegawai extends CI_Controller
             }
 
             $this->db->insert('riwayat_kgb', $data);
+
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil menyimpan data.</div>');
             redirect('pegawai/riwayatkgb');
