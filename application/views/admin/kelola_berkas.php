@@ -53,7 +53,7 @@
                                 <td>Tanggal Unggah</td>
                                 <th>
                                     <a href="" class="btn btn-success">Simpan Drive</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="<?= base_url('admin/hapusberkas/' . $b['id']); ?>" class="btn btn-danger">Delete</a>
                                 </th>
                             </tr>
                         <?php endforeach; ?>

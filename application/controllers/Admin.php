@@ -109,6 +109,12 @@ class Admin extends CI_Controller
         redirect('admin/kelolapengguna');
     }
 
+    public function hapusBerkas($id)
+    {
+        $this->db->delete('berkas', ['id' => $id]);
+        redirect('admin/kelolaberkas');
+    }
+
 
     public function kelolaPengguna()
     {
