@@ -60,4 +60,13 @@ class User extends CI_Controller
             }
         }
     }
+
+    public function profil()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('user/profil');
+        $this->load->view('templates/footer');
+    }
 }

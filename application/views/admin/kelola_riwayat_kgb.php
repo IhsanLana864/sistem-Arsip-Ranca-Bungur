@@ -74,7 +74,7 @@
                                 <td><a href="<?= base_url('assets/berkas/' . $rkgb['file_sk_berkala']); ?>"><?= $rkgb['file_sk_berkala']; ?></a></td>
                                 <td><?= $rkgb['waktu_pembuatan']; ?></td>
                                 <td>
-                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="#" class="btn btn-warning edit-btn" data-id="<?= $rkgb['id']; ?>" data-nama="<?= $rkgb['nama']; ?>" data-golongan_ruang="<?= $rkgb['golongan_ruang']; ?>" data-gaji="<?= $rkgb['gaji']; ?>" data-kgb_nomor_sk="<?= $rkgb['kgb_nomor_sk']; ?>" data-kgb_tmt="<?= $rkgb['kgb_tmt']; ?>" data-tanggal_yad_kgb="<?= $rkgb['tanggal_yad_kgb']; ?>" data-tahun_kgb="<?= $rkgb['tahun_kgb']; ?>" data-bulan_kgb="<?= $rkgb['bulan_kgb']; ?>" data-kgb_tanggal_surat="<?= $rkgb['kgb_tanggal_surat']; ?>" data-nomor_sk_terakhir="<?= $rkgb['nomor_sk_terakhir']; ?>" data-toggle="modal" data-target="#exampleModal">Edit</a>
                                     <a href="<?= base_url('riwayatkgb/delete/' . $rkgb['id']); ?>" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
@@ -238,3 +238,35 @@
 
 </div>
 <!-- End of Main Content -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.edit-btn').on('click', function() {
+            var id = $(this).data('id');
+            var nama = $(this).data('nama');
+            var golongan_ruang = $(this).data('golongan_ruang');
+            var gaji = $(this).data('gaji');
+            var kgb_nomor_sk = $(this).data('kgb_nomor_sk');
+            var kgb_tmt = $(this).data('kgb_tmt');
+            var tanggal_yad_kgb = $(this).data('tanggal_yad_kgb');
+            var tahun_kgb = $(this).data('tahun_kgb');
+            var bulan_kgb = $(this).data('bulan_kgb');
+            var kgb_tanggal_surat = $(this).data('kgb_tanggal_surat');
+            var nomor_sk_terakhir = $(this).data('nomor_sk_terakhir');
+
+            // Set values in the modal form
+            $('#form_kgb').attr('action', '<?= base_url("pegawai/riwayatkgb/update/"); ?>' + id);
+            $('input[name="nama"]').val(nama);
+            $('select[name="golongan_ruang"]').val(golongan_ruang);
+            $('input[name="gaji"]').val(gaji);
+            $('input[name="kgb_nomor_sk"]').val(kgb_nomor_sk);
+            $('input[name="kgb_tmt"]').val(kgb_tmt);
+            $('input[name="tanggal_yad_kgb"]').val(tanggal_yad_kgb);
+            $('select[name="tahun_kgb"]').val(tahun_kgb);
+            $('select[name="bulan_kgb"]').val(bulan_kgb);
+            $('input[name="kgb_tanggal_surat"]').val(kgb_tanggal_surat);
+            $('input[name="nomor_sk_terakhir"]').val(nomor_sk_terakhir);
+        });
+    });
+</script>

@@ -14,4 +14,8 @@ class RiwayatKGB extends CI_Controller
             redirect('pegawai/riwayatkgb');
         }
     }
+
+    public function edit($id)
+    {
+    }
 }

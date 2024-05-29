@@ -2,7 +2,8 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Edit Pengguna</h1>
+    <h1 class="h3 mb-2 text-gray-800">Edit Pengguna</h1>
+    <p class="mb-4"><a href="<?= base_url('admin/kelolapengguna'); ?>">Kembali</a> / Edit Pengguna</p>
 
     <div class="row">
 

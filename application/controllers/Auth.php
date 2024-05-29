@@ -45,11 +45,11 @@ class Auth extends CI_Controller
                     );
                     $this->session->set_userdata($userdata);
                     if ($user->nama_peran == 'Admin') {
-                        redirect('admin');
+                        redirect('admin/kelolapengguna');
                     } else if ($user->nama_peran == 'Kepala Sekolah') {
-                        redirect('kepalasekolah');
+                        redirect('kepalasekolah/datapegawai');
                     } else {
-                        redirect('pegawai');
+                        redirect('pegawai/profil');
                     }
                 } else {
                     // Jika verifikasi kata sandi gagal, tampilkan pesan error

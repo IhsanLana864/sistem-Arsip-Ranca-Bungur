@@ -9,38 +9,10 @@
 
     <!-- Nav Item - Kelola Pengguna -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/kelolapengguna'); ?>">
+        <a class="nav-link" href="<?= base_url('kepalasekolah/datapegawai'); ?>">
             <i class="fas fa-fw fa-user-edit"></i>
-            <span>Kelola Pengguna</span></a>
+            <span>Data Pegawai</span></a>
     </li>
-
-    <!-- Nav Item - Kelola Berkas -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/kelolaberkas'); ?>">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Kelola Berkas</span></a>
-    </li>
-
-    <!-- Nav Item - Kirim Notifikasi KGB: -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('notifikasi/kirimnotifkgb'); ?>">
-            <i class="fas fa-fw fa-bell"></i>
-            <span>Kirim Notifikasi KGB</span></a>
-    </li>
-
-    <!-- Nav Item - Kelola Riwayat KGB -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/kelolariwayatkgb'); ?>">
-            <i class="fas fa-fw fa-history"></i>
-            <span>Kelola Riwayat KGB</span></a>
-    </li>
-
-    <!-- Nav Item - Profil -->
-    <!-- <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user/profil'); ?>">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Profil</span></a>
-    </li> -->
 
     <!-- Nav Item - Keluar -->
     <li class="nav-item">

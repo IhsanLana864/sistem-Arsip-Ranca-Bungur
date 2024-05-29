@@ -43,6 +43,17 @@ class UserModel extends CI_Model
         return $query->result_array();
     }
 
+    public function get_all_pegawai()
+    {
+        $this->db->select('pengguna.*, pengguna.email as pengguna_email, peran.nama_peran, biodata.*');
+        $this->db->from('pengguna');
+        $this->db->join('peran', 'pengguna.peranId = peran.id', 'left');
+        $this->db->join('biodata', 'pengguna.id = biodata.penggunaId', 'left');
+        $this->db->where('pengguna.peranId', 3);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function add_user($data)
     {
         $this->db->insert('pengguna', $data);
